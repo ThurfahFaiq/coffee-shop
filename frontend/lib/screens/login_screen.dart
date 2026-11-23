@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/api_service.dart';
+import 'register_screen.dart'; // Pastikan file register_screen.dart sudah dibuat
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoading = false;
-  bool _obscureText = true; // Untuk toggle show/hide password
+  bool _obscureText = true;
 
   void _login() async {
     setState(() => _isLoading = true);
@@ -78,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 120,
                   width: 120,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF6F4E37), // Warna coklat kopi
+                    color: const Color(0xFF6F4E37),
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
@@ -189,24 +190,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 
                 // --- LINK REGISTER ---
-                const SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Belum punya akun? ', style: GoogleFonts.poppins(color: Colors.grey[700])),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigasi ke halaman Register nanti
-                      },
-                      child: Text(
-                        'Daftar sekarang',
-                        style: GoogleFonts.poppins(
-                          color: const Color(0xFF6F4E37),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                                // --- LINK REGISTER (GANTI DENGAN INI) ---
+                const SizedBox(height: 16),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                    );
+                  },
+                  child: Text(
+                    'Belum punya akun? Daftar sekarang',
+                    style: GoogleFonts.poppins(
+                      color: const Color(0xFF6F4E37),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
